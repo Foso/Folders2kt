@@ -1,154 +1,22 @@
+package de.jensklingenberg.parser
+
+import de.jensklingenberg.*
+import de.jensklingenberg.ast.DeclareCmd
+import de.jensklingenberg.ast.ExpressionsType
+import de.jensklingenberg.ast.GtExpr
+import de.jensklingenberg.ast.LetCmd
+import de.jensklingenberg.ast.LiteralExpr
+import de.jensklingenberg.ast.PrintCmd
+import de.jensklingenberg.ast.SubExpr
+import de.jensklingenberg.ast.Types
+import de.jensklingenberg.ast.VarExpr
+import de.jensklingenberg.ast.WhileCmd
+import de.jensklingenberg.ast.*
+import de.jensklingenberg.ast.xExpr
 import java.io.File
 
 
-object mycompo : Comparator<File> {
-    override fun compare(p0: File?, p1: File?): Int {
-        val short0 = p0!!.absolutePath.substringAfterLast("/")
-        val short1 = p1!!.absolutePath.substringAfterLast("/")
-        var pp = -1
-
-
-
-        if (short0.length <= short1.length) {
-            short0.toCharArray().forEachIndexed { index, c ->
-                val secChar = short1.toCharArray()[index]
-                if (c < secChar) {
-                    pp = 1
-                }
-            }
-        } else {
-            short1.toCharArray().forEachIndexed { index, char ->
-                val secChar = short0.toCharArray()[index]
-                if (char < secChar) {
-                    pp = -1
-                }
-            }
-        }
-
-
-        return pp
-
-    }
-}
-
-
-object mycompo2 : Comparator<String> {
-    override fun compare(p0: String?, p1: String?): Int {
-        val short0 = p0!!.substringAfterLast("/")
-        val short1 = p1!!.substringAfterLast("/")
-        var pp = 0
-
-        if (short0.length <= short1.length) {
-            short0.toCharArray().forEachIndexed { index, c ->
-                val secChar = short1.toCharArray()[index]
-                if (c < secChar) {
-                    pp = 1
-                }
-            }
-        } else {
-            short1.toCharArray().forEachIndexed { index, char ->
-                val secChar = short0.toCharArray()[index]
-                if (char < secChar) {
-                    pp = 1
-                }
-            }
-        }
-
-
-        return pp
-
-    }
-}
-
-fun main() {
-
-    val cmdfolders =
-        File("/home/jens/Code/2021/jk/Folders.py/sample_programs/99Bottles").listFolders()
-
-
-    val cmds = cmdfolders.map {
-        parseCommands(it)
-    }
-
-    cmds.forEach {
-        val source=  printCmd(it)
-        source.split("/n").forEach {
-            println(it)
-        }
-    }
-
-}
-
-fun printCmd(it: xCommand): String {
-    when (it.command) {
-        Commandtype.IF -> {}
-        Commandtype.WHILE -> {
-
-            val cmd = it as WhileCmd
-            val exprText = printExpr(cmd.expr)
-            val tt = "WHILE ($exprText) {\n" + cmd.commands.joinToString(separator = "") {
-                printCmd(it)
-            } + "END WHILE"
-            return tt
-
-        }
-        Commandtype.DECLARE -> {
-            val cmd = it as DeclareCmd
-            return "Declare: ${cmd.varName} : ${cmd.types} \n"
-
-        }
-
-        Commandtype.LET -> {
-            val cmd = it as LetCmd
-
-            return cmd.varName + printExpr(cmd.expr)
-
-        }
-        Commandtype.PRINT -> {
-            val cmd = it as PrintCmd
-            return "printLn(" + printExpr(cmd.expr) + "  )\n"
-        }
-        Commandtype.INPUT -> {}
-    }
-    return ""
-}
-
-
-fun printExpr(xExpr: xExpr): String {
-    when (xExpr.expressionsType) {
-        ExpressionsType.Variable -> {
-            val exp = xExpr as VarExpr
-            val k = "val ${exp.varName} "
-
-            return k
-        }
-        ExpressionsType.Add -> TODO()
-        ExpressionsType.Subtract -> {
-            val exp = xExpr as SubExpr
-
-
-            return printExpr(exp.leftExpr) + "-" + printExpr(exp.rightExpr)
-        }
-        ExpressionsType.Multiply -> TODO()
-        ExpressionsType.Divide -> TODO()
-        ExpressionsType.Literal -> {
-            val exp = xExpr as LiteralExpr
-            return " ${exp.value} : ${exp.types} "
-
-        }
-        ExpressionsType.Equal -> TODO()
-        ExpressionsType.GREATER -> {
-            val exp = xExpr as GtExpr
-
-            return printExpr(exp.leftExpr) + ">" + printExpr(exp.rightExpr)
-        }
-        ExpressionsType.Emty -> TODO()
-    }
-
-
-}
-
-fun parseCommands(it: File): xCommand {
+fun parseCommands(it: File): Command {
 
     val cmd = getCmdType(it.listFolders()[0])
     when (cmd) {
@@ -223,10 +91,10 @@ fun parseExpression(file: File): xExpr {
             val rightExpr = parseExpression(file.listFolders()[2])
             return GtExpr(leftExpr, rightExpr)
         }
-        null -> TODO()
+        else -> TODO()
     }
 
-    return EmtyExpr()
+
 
 }
 
@@ -294,23 +162,4 @@ fun parseInt(path: String): String {
 
 
     return Integer.parseInt(binFirst + binSec, 2).toString();
-}
-
-
-fun File.listFolders(): List<File> {
-    val lengthThenNatural = compareBy<File> { it.absolutePath }
-        .then(naturalOrder())
-    return this.listFiles().filter { it.isDirectory }.sorted()
-}
-
-enum class Commandtype(val index: Int) {
-    IF(0), WHILE(1), DECLARE(2), LET(3), PRINT(4), INPUT(5)
-}
-
-enum class ExpressionsType(val index: Int) {
-    Variable(0), Add(1), Subtract(2), Multiply(3), Divide(4), Literal(5), Equal(6), GREATER(7), Emty(80)
-}
-
-enum class Types(val index: Int) {
-    INT(0), FLOAT(1), STRING(2), CHAR(3)
 }
