@@ -1,7 +1,9 @@
 package de.jensklingenberg.parser
 
-import de.jensklingenberg.*
+import de.jensklingenberg.ast.Command
+import de.jensklingenberg.ast.Commandtype
 import de.jensklingenberg.ast.DeclareCmd
+import de.jensklingenberg.ast.Expr
 import de.jensklingenberg.ast.ExpressionsType
 import de.jensklingenberg.ast.GtExpr
 import de.jensklingenberg.ast.LetCmd
@@ -11,19 +13,20 @@ import de.jensklingenberg.ast.SubExpr
 import de.jensklingenberg.ast.Types
 import de.jensklingenberg.ast.VarExpr
 import de.jensklingenberg.ast.WhileCmd
-import de.jensklingenberg.ast.*
-import de.jensklingenberg.ast.xExpr
+import de.jensklingenberg.listFolders
 import java.io.File
 
 
 fun parseCommands(it: File): Command {
-
-    val cmd = getCmdType(it.listFolders()[0])
-    when (cmd) {
+    val cmdFolder = it.listFolders()[0]
+    when (getCmdType(cmdFolder)) {
         Commandtype.IF -> TODO()
         Commandtype.WHILE -> {
-            val expr = parseExpression(it.listFolders()[1])
-            val cmds = it.listFolders()[2].listFolders().map { parseCommands(it) }
+            val exprFolder = it.listFolders()[1]
+            val expr = parseExpression(exprFolder)
+
+            val cmdsFolder = it.listFolders()[2]
+            val cmds = cmdsFolder.listFolders().map { parseCommands(it) }
             return WhileCmd(expr, cmds)
         }
         Commandtype.DECLARE -> {
@@ -49,7 +52,7 @@ fun parseCommands(it: File): Command {
 }
 
 
-fun parseExpression(file: File): xExpr {
+fun parseExpression(file: File): Expr {
     val expFolder = file.listFolders()[0]
     val expType = ExpressionsType.values().find { it.index == expFolder.listFolders().size }
 
@@ -93,7 +96,6 @@ fun parseExpression(file: File): xExpr {
         }
         else -> TODO()
     }
-
 
 
 }
