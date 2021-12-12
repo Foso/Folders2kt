@@ -1,3 +1,3 @@
 
-rootProject.name = "aoc"
+rootProject.name = "Folders2kt"
 

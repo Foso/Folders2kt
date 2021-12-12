@@ -4,7 +4,7 @@ plugins {
     kotlin("jvm") version "1.6.0"
 }
 
-group = "me.jens"
+group = "de.jensklingenberg"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -20,6 +20,7 @@ dependencies {
     implementation(kotlin("scripting-compiler-embeddable"))
     implementation(kotlin("script-util"))
     testImplementation(kotlin("test"))
+
 }
 
 tasks.test {
