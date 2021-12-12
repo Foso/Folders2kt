@@ -1,33 +1,79 @@
 package de.jensklingenberg.ast
 
 
-class GtExpr(val leftExpr: Expr, val rightExpr: Expr) : Expr(ExpressionsType.GREATER) {
+class GtExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
     override fun toString(): String {
         return "$leftExpr>$rightExpr"
     }
 }
 
-class VarExpr(val varName: String) : Expr(ExpressionsType.Variable) {
+/**
+ * Second and third folders hold expressions to compare
+ */
+class LtExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
     override fun toString(): String {
-        return varName
+        return "$leftExpr<$rightExpr"
     }
 }
 
-class SubExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr(ExpressionsType.Subtract) {
+class EqExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
+    override fun toString(): String {
+        return "$leftExpr==$rightExpr"
+    }
+}
+
+class VarExpr(private val varName: String) : Expr() {
+    override fun toString(): String {
+        return "var_$varName"
+    }
+}
+
+class SubExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
     override fun toString(): String {
         return "$leftExpr-$rightExpr\n"
     }
 }
 
-
-class LiteralExpr(val types: Types, val value: String) : Expr(ExpressionsType.Literal) {
+class MultiplyExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
     override fun toString(): String {
-        return value
+        return "$leftExpr*$rightExpr\n"
     }
 }
 
-open class Expr(val expressionsType: ExpressionsType)
+class DivExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
+    override fun toString(): String {
+        return "$leftExpr/$rightExpr\n"
+    }
+}
+
+class AddExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
+    override fun toString(): String {
+        return "$leftExpr+$rightExpr\n"
+    }
+}
+
+class LiteralExpr(private val types: Types, private val value: String) : Expr() {
+    override fun toString(): String {
+       return when(types){
+            Types.INT -> {
+                value
+            }
+            Types.FLOAT -> {
+                value+"f"
+            }
+            Types.STRING -> {
+                "\""+value+"\""
+            }
+            Types.CHAR -> {
+                "\""+value+"\""
+            }
+        }
+
+    }
+}
+
+open class Expr
 
 enum class ExpressionsType(val index: Int) {
-    Variable(0), Add(1), Subtract(2), Multiply(3), Divide(4), Literal(5), Equal(6), GREATER(7)
+    Variable(0), Add(1), Subtract(2), Multiply(3), Divide(4), Literal(5), Equal(6), GREATER(7), LESSTHAN(7)
 }

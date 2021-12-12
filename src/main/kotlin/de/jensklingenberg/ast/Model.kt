@@ -1,9 +1,19 @@
 package de.jensklingenberg.ast
 
 
-open class Command(val commandtype: Commandtype)
+open class Command
 
-class WhileCmd(val expr: Expr, val commands: List<Command>) : Command(Commandtype.WHILE) {
+
+class IfCmd(private val expr: Expr, private val commands: List<Command>) : Command() {
+    override fun toString(): String {
+        val exprText = expr.toString()
+        return "\nif ($exprText) {\n" + commands.joinToString(separator = "") {
+            it.toString()
+        } + "}\n"
+    }
+}
+
+class WhileCmd(private val expr: Expr, private val commands: List<Command>) : Command() {
     override fun toString(): String {
         val exprText = expr.toString()
         return "\nwhile ($exprText) {\n" + commands.joinToString(separator = "") {
@@ -12,15 +22,20 @@ class WhileCmd(val expr: Expr, val commands: List<Command>) : Command(Commandtyp
     }
 }
 
+class InputCmd(private val varName: String) : Command() {
+    override fun toString(): String {
+        return "var var_$varName = input() \n"
+    }
+}
 
-class PrintCmd(val expr: Expr) : Command(Commandtype.PRINT) {
+class PrintCmd(private val expr: Expr) : Command() {
 
     override fun toString(): String {
         val isString = expr is LiteralExpr
 
         return when (isString) {
             true -> {
-                "print(\"$expr\")\n"
+                "print($expr)\n"
             }
             false -> {
                 "print($expr)\n"
@@ -29,30 +44,29 @@ class PrintCmd(val expr: Expr) : Command(Commandtype.PRINT) {
     }
 }
 
-class DeclareCmd(val types: Types, val varName: String) : Command(Commandtype.DECLARE) {
+class DeclareCmd(private val types: Types, private val varName: String) : Command() {
     override fun toString(): String {
-        val default :String = when(types){
+        val default: String = when (types) {
             Types.INT -> "0"
             Types.FLOAT -> "0.0f"
-            Types.STRING -> "\"\""
-            Types.CHAR -> "\"\""
+            Types.STRING, Types.CHAR -> "\"\""
         }
         return "var $varName : ${types.ktType} = $default \n"
     }
 }
 
-class LetCmd(val varName: String, val expr: Expr) : Command(Commandtype.LET) {
+class LetCmd(private val varName: String, private val expr: Expr) : Command() {
     override fun toString(): String {
-        return "$varName=$expr"
+        return " var $varName=$expr"
     }
 }
 
 
-enum class Commandtype(val index: Int) {
+enum class CommandType(val index: Int) {
     IF(0), WHILE(1), DECLARE(2), LET(3), PRINT(4), INPUT(5)
 }
 
 
 enum class Types(val index: Int, val ktType: String) {
-    INT(0, "Int"), FLOAT(1, "Float"), STRING(2, "String"), CHAR(3, "Char")
+    INT(0, "Int"), FLOAT(1, "Float"), STRING(2, "String"), CHAR(3, "String")
 }
