@@ -27,7 +27,7 @@ This is what a "Hello World"-program looks like:
 Folders2kt can execute this programs on the JVM or print you Kotlin source code for it. 
 
 ### Run it
-To execute a Folders program you need a the directory path of the program with the "-d" parameter
+To execute a Folders program you need to add the directory path of the program with the "-d" parameter
 
 ** java -jar Folders2kt-1.0-SNAPSHOT-all.jar -d /Users/jklingenberg/Code/2021/Folders2kt/sample_programs/99Bottles**
 
