@@ -6,9 +6,12 @@ Kotlin Transpiler/Interpreter of the Folders esoteric programming language, a la
 [![jCenter](https://img.shields.io/badge/Apache-2.0-green.svg
 )](https://github.com/Foso/Folders2kt/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-  <a href="https://twitter.com/intent/tweet?text=Hey, check out Folders2kt - Share Easy Android App https://github.com/Foso/Folders2kt via @jklingenberg_ #Android 
+  <a href="https://twitter.com/intent/tweet?text=Hey, check out Folders2kt https://github.com/Foso/Folders2kt via @jklingenberg_ 
 "><img src="https://img.shields.io/twitter/url/https/github.com/angular-medellin/meetup.svg?style=social" alt="Tweet"></a>
 
+### Show some :heart: and star the repo to support the project
+
+[![GitHub stars](https://img.shields.io/github/stars/Foso/Folders2kt.svg?style=social&label=Star)](https://github.com/Foso/Folders2kt) [![GitHub forks](https://img.shields.io/github/forks/Foso/Folders2kt.svg?style=social&label=Fork)](https://github.com/Foso/Folders2kt/fork) [![GitHub watchers](https://img.shields.io/github/watchers/Foso/Folders2kt.svg?style=social&label=Watch)](https://github.com/Foso/Folders2kt) [![Twitter Follow](https://img.shields.io/twitter/follow/jklingenberg_.svg?style=social)](https://twitter.com/jklingenberg_)
 
 ## Introduction
 
