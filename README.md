@@ -1,5 +1,5 @@
 <h1 align="center">Folders2kt </h1>
-Kotlin Transpiler/Interpreter of the Folders esoteric programming language, a language with no code and just folders. 
+A Transpiler/Interpreter of the Folders esoteric programming language, a language with no code and just folders, written in Kotlin
 
 
 
