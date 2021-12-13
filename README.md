@@ -17,7 +17,7 @@ A Interpreter/Transpiler of the Folders esoteric programming language, a languag
 
 
 "Folders is a language where the program is encoded into a directory structure. All files within are ignored, as are the names of the folders. Commands and expressions are encoded by the pattern of folders within folders. "
-Folders was created by Daniel Temkin https://danieltemkin.com/Esolangs/Folders/
+Folders was created by Daniel Temkin https://danieltemkin.com/Esolangs/Folders/. I`ve want to learn about the language, check https://www.youtube.com/watch?v=Igh-vBI2LXc
 
 This is what a "Hello World"-program looks like:
 <p align="center">
@@ -43,6 +43,20 @@ To execute a Folders program you need a the directory path of the program with t
 <p align="center">
   <img src ="https://raw.githubusercontent.com/Foso/Folders2kt/master/docs/source.png" height=50 />
 </p>
+
+# 🏠 Architecture
+
+## 🛠️ Built With
+### Kotlin
+[![jCenter](https://img.shields.io/badge/Kotlin-1.6.0-green.svg
+)]()
+
+
+
+### Project Structure
+* <kbd>src/main</kbd> - Source code of the interpreter
+* <kbd>sample_programs</kbd> - Example programs i got from https://github.com/SinaKhalili/Folders.py
+
 
 ## ✍️ Feedback
 
