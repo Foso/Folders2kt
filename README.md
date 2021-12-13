@@ -21,6 +21,10 @@ This is an example of a "Hello World"-program:
   <img src ="https://raw.githubusercontent.com/Foso/Folders2kt/master/docs/helloworld.png" height=500 />
 </p>
 
+Folders2kt can execute this programs on the JVM or print you Kotlin source code for it. 
+
+
+
 ## ✍️ Feedback
 
 Feel free to send feedback on [Twitter](https://twitter.com/jklingenberg_) or [file an issue](https://github.com/foso/Folders2kt/issues/new). Feature requests are always welcome. If you wish to contribute, please take a quick look at the [guidelines](./CONTRIBUTING.md)!
