@@ -2,16 +2,29 @@ package de.jensklingenberg.folders2kt
 
 import de.jensklingenberg.folders2kt.ast.Command
 import de.jensklingenberg.folders2kt.objectloader.KtsObjectLoader
+
 import de.jensklingenberg.folders2kt.parser.parseCommands
+
 import java.io.File
 
 
 fun main(args: Array<String>) {
 
+    val debug = false
+    val cmdArgs = if (debug) {
+        arrayOf("-d", "/Users/jklingenberg/Code/2021/Folders2kt/sample_programs/HelloWorld")
+    } else {
+        args
+    }
 
-    val printSource = args.contains("-source")
+    val printSource = cmdArgs.contains("-source")
     val execute = !printSource
-    val folderPath = args.get(args.indexOf("-d")+1)
+    val dirParameterIndex = cmdArgs.indexOf("-d")
+    if (dirParameterIndex == -1) {
+        throw Exception("directory paramater -d missing")
+    }
+    val folderPath = cmdArgs[dirParameterIndex + 1]
+
     val cmdfolders =
         File(folderPath).listFolders()
 
@@ -40,10 +53,10 @@ fun main(args: Array<String>) {
         
          1""".trimIndent()
 
-    if(printSource){
+    if (printSource) {
         println(scriptSource.dropLast(1))
     }
-    if(execute){
+    if (execute) {
         KtsObjectLoader().load<Int>(scriptSource)
     }
 }

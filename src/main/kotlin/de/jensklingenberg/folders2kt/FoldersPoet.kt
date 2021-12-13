@@ -2,7 +2,7 @@ package de.jensklingenberg.folders2kt
 
 import java.io.File
 
-fun main() {
+fun poetTest() {
 
     val path= "/home/jens/Code/2021/FoldersKt/src/fold"
 
