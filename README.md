@@ -29,7 +29,7 @@ Folders2kt can execute this programs on the JVM or print you Kotlin source code 
 ### Run it
 To execute a Folders program you need to add the directory path of the program with the "-d" parameter
 
-** java -jar Folders2kt-1.0-SNAPSHOT-all.jar -d /Users/jklingenberg/Code/2021/Folders2kt/sample_programs/99Bottles**
+<kbd> java -jar Folders2kt-1.0-SNAPSHOT-all.jar -d /Users/jklingenberg/Code/2021/Folders2kt/sample_programs/99Bottles </kbd>
 
 <p align="center">
   <img src ="https://raw.githubusercontent.com/Foso/Folders2kt/master/docs/execute.png" height=50 />
@@ -38,7 +38,7 @@ To execute a Folders program you need to add the directory path of the program w
 ### Print Source
 To execute a Folders program you need a the directory path of the program with the "-d" parameter and the "-source" parameter
 
- java -jar Folders2kt-1.0-SNAPSHOT-all.jar -d /Users/jklingenberg/Code/2021/Folders2kt/sample_programs/99Bottles -source
+<kbd> java -jar Folders2kt-1.0-SNAPSHOT-all.jar -d /Users/jklingenberg/Code/2021/Folders2kt/sample_programs/99Bottles -source </kbd>
 
 <p align="center">
   <img src ="https://raw.githubusercontent.com/Foso/Folders2kt/master/docs/source.png" height=50 />
