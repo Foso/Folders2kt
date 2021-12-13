@@ -18,7 +18,7 @@ Folders was created by Daniel Temkin https://danieltemkin.com/Esolangs/Folders/
 
 This is an example of a "Hello World"-program:
 <p align="center">
-  <img src ="https://raw.githubusercontent.com/Foso/Folders2kt/master/docs/helloworld.png?token=ABGIP3BSZ34WXVQEXNNEULLBW3S6S" height=500 />
+  <img src ="https://raw.githubusercontent.com/Foso/Folders2kt/master/docs/helloworld.png" height=500 />
 </p>
 
 ## ✍️ Feedback
