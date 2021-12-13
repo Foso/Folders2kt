@@ -17,7 +17,7 @@ A Interpreter/Transpiler of the Folders esoteric programming language, a languag
 
 
 "Folders is a language where the program is encoded into a directory structure. All files within are ignored, as are the names of the folders. Commands and expressions are encoded by the pattern of folders within folders. "
-Folders was created by Daniel Temkin https://danieltemkin.com/Esolangs/Folders/. I`ve want to learn about the language, check https://www.youtube.com/watch?v=Igh-vBI2LXc
+Folders was created by Daniel Temkin https://danieltemkin.com/Esolangs/Folders/. I`ve want to learn more about the language, check https://www.youtube.com/watch?v=Igh-vBI2LXc
 
 This is what a "Hello World"-program looks like:
 <p align="center">
@@ -41,7 +41,7 @@ To execute a Folders program you need a the directory path of the program with t
 <kbd> java -jar Folders2kt-1.0-SNAPSHOT-all.jar -d /Users/jklingenberg/Code/2021/Folders2kt/sample_programs/99Bottles -source </kbd>
 
 <p align="center">
-  <img src ="https://raw.githubusercontent.com/Foso/Folders2kt/master/docs/source.png" height=50 />
+  <img src ="https://raw.githubusercontent.com/Foso/Folders2kt/master/docs/source.png" height=200 />
 </p>
 
 # 🏠 Architecture
