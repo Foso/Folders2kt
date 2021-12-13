@@ -1,79 +1,45 @@
 package de.jensklingenberg.folders2kt.ast
 
 
-class GtExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
-    override fun toString(): String {
-        return "$leftExpr>$rightExpr"
-    }
+open class CompareExpr(
+    private val leftExpr: Expression,
+    private val rightExpr: Expression,
+    private val keyword: String
+) : Expression() {
+    override fun toString(): String = "$leftExpr$keyword$rightExpr"
 }
 
-/**
- * Second and third folders hold expressions to compare
- */
-class LtExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
-    override fun toString(): String {
-        return "$leftExpr<$rightExpr"
-    }
+class GtExpr(leftExpr: Expression, rightExpr: Expression) : CompareExpr(leftExpr, rightExpr, ">")
+class LtExpr(leftExpr: Expression, rightExpr: Expression) : CompareExpr(leftExpr, rightExpr, "<")
+class EqExpr(leftExpr: Expression, rightExpr: Expression) : CompareExpr(leftExpr, rightExpr, "=")
+class SubExpr(leftExpr: Expression, rightExpr: Expression) : CompareExpr(leftExpr, rightExpr, "-")
+class MultiplyExpr(leftExpr: Expression, rightExpr: Expression) : CompareExpr(leftExpr, rightExpr, "*")
+class DivExpr(leftExpr: Expression, rightExpr: Expression) : CompareExpr(leftExpr, rightExpr, "/")
+class AddExpression(leftExpr: Expression, rightExpr: Expression) : CompareExpr(leftExpr, rightExpr, "+")
+
+class VarExpr(private val varName: String) : Expression() {
+    override fun toString(): String = "var_$varName"
 }
 
-class EqExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
+class LiteralExpr(private val types: Types, private val value: String) : Expression() {
     override fun toString(): String {
-        return "$leftExpr==$rightExpr"
-    }
-}
-
-class VarExpr(private val varName: String) : Expr() {
-    override fun toString(): String {
-        return "var_$varName"
-    }
-}
-
-class SubExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
-    override fun toString(): String {
-        return "$leftExpr-$rightExpr\n"
-    }
-}
-
-class MultiplyExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
-    override fun toString(): String {
-        return "$leftExpr*$rightExpr\n"
-    }
-}
-
-class DivExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
-    override fun toString(): String {
-        return "$leftExpr/$rightExpr\n"
-    }
-}
-
-class AddExpr(private val leftExpr: Expr, private val rightExpr: Expr) : Expr() {
-    override fun toString(): String {
-        return "$leftExpr+$rightExpr\n"
-    }
-}
-
-class LiteralExpr(private val types: Types, private val value: String) : Expr() {
-    override fun toString(): String {
-       return when(types){
+        return when (types) {
             Types.INT -> {
                 value
             }
             Types.FLOAT -> {
-                value+"f"
+                value + "f"
             }
-            Types.STRING -> {
-                "\""+value+"\""
-            }
-            Types.CHAR -> {
-                "\""+value+"\""
+            Types.STRING, Types.CHAR -> {
+                "\"" + value + "\""
             }
         }
 
     }
 }
 
-open class Expr
+open class Expression
 
-enum class ExpressionsType(val index: Int) {
+enum class ExpressionsType(val folders: Int) {
     Variable(0), Add(1), Subtract(2), Multiply(3), Divide(4), Literal(5), Equal(6), GREATER(7), LESSTHAN(7)
 }

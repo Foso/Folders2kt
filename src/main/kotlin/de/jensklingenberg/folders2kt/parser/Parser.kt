@@ -1,12 +1,12 @@
 package de.jensklingenberg.folders2kt.parser
 
-import de.jensklingenberg.folders2kt.ast.AddExpr
+import de.jensklingenberg.folders2kt.ast.AddExpression
 import de.jensklingenberg.folders2kt.ast.Command
 import de.jensklingenberg.folders2kt.ast.CommandType
 import de.jensklingenberg.folders2kt.ast.DeclareCmd
 import de.jensklingenberg.folders2kt.ast.DivExpr
 import de.jensklingenberg.folders2kt.ast.EqExpr
-import de.jensklingenberg.folders2kt.ast.Expr
+import de.jensklingenberg.folders2kt.ast.Expression
 import de.jensklingenberg.folders2kt.ast.ExpressionsType
 import de.jensklingenberg.folders2kt.ast.GtExpr
 import de.jensklingenberg.folders2kt.ast.IfCmd
@@ -68,9 +68,9 @@ fun parseCommands(it: File): Command {
 }
 
 
-fun parseExpression(file: File): Expr {
+fun parseExpression(file: File): Expression {
     val expFolder = file.listFolders()[0]
-    val expType = ExpressionsType.values().find { it.index == expFolder.listFolders().size }
+    val expType = ExpressionsType.values().find { it.folders == expFolder.listFolders().size }
         ?: throw Exception("Expression not found")
 
     when (expType) {
@@ -81,7 +81,7 @@ fun parseExpression(file: File): Expr {
         ExpressionsType.Add -> {
             val leftExpr = parseExpression(file.listFolders()[1])
             val rightExpr = parseExpression(file.listFolders()[2])
-            return AddExpr(leftExpr, rightExpr)
+            return AddExpression(leftExpr, rightExpr)
         }
         ExpressionsType.Subtract -> {
             val leftExpr = parseExpression(file.listFolders()[1])
@@ -103,12 +103,12 @@ fun parseExpression(file: File): Expr {
             return when (val litType = parseType(litTypeFolder)) {
                 Types.INT -> {
                     val literalFolder = file.listFolders()[2]
-                    val word = parseInt(literalFolder.absolutePath)
+                    val word = parseCharr(literalFolder.absolutePath, Types.INT)
                     LiteralExpr(litType, word)
                 }
                 Types.FLOAT -> {
                     val literalFolder = file.listFolders()[2]
-                    val word = parseInt(literalFolder.absolutePath)
+                    val word = parseCharr(literalFolder.absolutePath, Types.FLOAT)
                     LiteralExpr(litType, word)
                 }
                 Types.STRING -> {
@@ -150,7 +150,7 @@ fun parseType(file: File): Types {
 }
 
 fun getCmdType(file: File): CommandType {
-    return CommandType.values().find { it.index == file.listFolders().size } ?: throw Exception("No cmd found")
+    return CommandType.values().find { it.folders == file.listFolders().size } ?: throw Exception("No cmd found")
 }
 
 fun parseLiteral(path: String): String {
@@ -183,7 +183,8 @@ fun parseChar(path: String): String {
     return charVal.toString()
 }
 
-fun parseInt(path: String): String {
+
+fun parseCharr(path: String, float: Types): String {
     val folder = File(path).listFolders()
     val firstFolder = folder[0].listFolders()
 
@@ -201,5 +202,16 @@ fun parseInt(path: String): String {
         binSec += it.listFolders().size.toString()
     }
 
-    return Integer.parseInt(binFirst + binSec, 2).toString();
+    val charCode = Integer.parseInt(binFirst + binSec, 2);
+
+    return when (float) {
+        Types.INT, Types.FLOAT -> {
+            charCode.toString();
+        }
+        Types.STRING, Types.CHAR -> {
+            val charVal = charCode.toChar()
+
+            return charVal.toString()
+        }
+    }
 }

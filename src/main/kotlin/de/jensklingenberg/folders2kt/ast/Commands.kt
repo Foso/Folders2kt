@@ -4,19 +4,17 @@ package de.jensklingenberg.folders2kt.ast
 open class Command
 
 
-class IfCmd(private val expr: Expr, private val commands: List<Command>) : Command() {
+class IfCmd(private val expr: Expression, private val commands: List<Command>) : Command() {
     override fun toString(): String {
-        val exprText = expr.toString()
-        return "\nif ($exprText) {\n" + commands.joinToString(separator = "") {
+        return "\nif ($expr) {\n" + commands.joinToString(separator = "") {
             it.toString()
         } + "}\n"
     }
 }
 
-class WhileCmd(private val expr: Expr, private val commands: List<Command>) : Command() {
+class WhileCmd(private val expr: Expression, private val commands: List<Command>) : Command() {
     override fun toString(): String {
-        val exprText = expr.toString()
-        return "\nwhile ($exprText) {\n" + commands.joinToString(separator = "") {
+        return "\nwhile ($expr) {\n" + commands.joinToString(separator = "") {
             it.toString()
         } + "}\n"
     }
@@ -28,19 +26,9 @@ class InputCmd(private val varName: String) : Command() {
     }
 }
 
-class PrintCmd(private val expr: Expr) : Command() {
-
+class PrintCmd(private val expr: Expression) : Command() {
     override fun toString(): String {
-        val isString = expr is LiteralExpr
-
-        return when (isString) {
-            true -> {
-                "print($expr)\n"
-            }
-            false -> {
-                "print($expr)\n"
-            }
-        }
+        return "print($expr)\n"
     }
 }
 
@@ -55,14 +43,14 @@ class DeclareCmd(private val types: Types, private val varName: String) : Comman
     }
 }
 
-class LetCmd(private val varName: String, private val expr: Expr) : Command() {
+class LetCmd(private val varName: String, private val expression: Expression) : Command() {
     override fun toString(): String {
-        return "var $varName = $expr \n "
+        return "var $varName = $expression \n "
     }
 }
 
 
-enum class CommandType(val index: Int) {
+enum class CommandType(val folders: Int) {
     IF(0), WHILE(1), DECLARE(2), LET(3), PRINT(4), INPUT(5)
 }
 

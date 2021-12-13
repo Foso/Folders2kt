@@ -10,7 +10,7 @@ import java.io.File
 
 fun main(args: Array<String>) {
 
-    val debug = false
+    val debug = true
     val cmdArgs = if (debug) {
         arrayOf("-d", "/Users/jklingenberg/Code/2021/Folders2kt/sample_programs/HelloWorld")
     } else {

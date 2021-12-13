@@ -4,13 +4,13 @@ import java.io.File
 
 fun poetTest() {
 
-    val path= "/home/jens/Code/2021/FoldersKt/src/fold"
+    val path = "/home/jens/Code/2021/FoldersKt/src/fold"
 
     val word = "Hello World!"
 
     word.toCharArray().forEachIndexed { letterIndex, c ->
 
-        val bin = Integer.toBinaryString(word.toCharArray()[letterIndex].code.toByte().toInt()).padStart(8,'0')
+        val bin = Integer.toBinaryString(word.toCharArray()[letterIndex].code.toByte().toInt()).padStart(8, '0')
 
         println(bin)
 
@@ -24,36 +24,24 @@ fun poetTest() {
         File("$letterPathFolder/0").mkdirs()
 
         first.forEachIndexed { index, c ->
-            if(c=='0'){
+            if (c == '0') {
                 File("$letterPathFolder/0/$index").mkdirs()
             }
-            if(c=='1'){
+            if (c == '1') {
                 File("$letterPathFolder/0/$index/1").mkdirs()
             }
         }
         File("$letterPathFolder/1").mkdirs()
         right.forEachIndexed { index, c ->
-            if(c=='0'){
+            if (c == '0') {
                 File("$letterPathFolder/1/$index").mkdirs()
             }
-            if(c=='1'){
+            if (c == '1') {
                 File("$letterPathFolder/1/$index/1").mkdirs()
             }
         }
 
 
-
     }
 
 }
-
-
-
-fun createZero(path:String){
-    File(path).mkdirs()
-}
-
-fun createOne(path:String){
-    File(path+"/"+"Hallo").mkdir()
-}
-
