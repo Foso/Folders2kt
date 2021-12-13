@@ -16,7 +16,7 @@ Kotlin Transpiler/Interpreter of the Folders esoteric programming language, a la
 "Folders is a language where the program is encoded into a directory structure. All files within are ignored, as are the names of the folders. Commands and expressions are encoded by the pattern of folders within folders. "
 Folders was created by Daniel Temkin https://danieltemkin.com/Esolangs/Folders/
 
-This is an example of a "Hello World"-program:
+This is what a "Hello World"-program looks like:
 <p align="center">
   <img src ="https://raw.githubusercontent.com/Foso/Folders2kt/master/docs/helloworld.png" height=500 />
 </p>
