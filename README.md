@@ -46,7 +46,7 @@ To execute a Folders program you need a the directory path of the program with t
 
 ## ✍️ Feedback
 
-Feel free to send feedback on [Twitter](https://twitter.com/jklingenberg_) or [file an issue](https://github.com/foso/Folders2kt/issues/new). Feature requests are always welcome. If you wish to contribute, please take a quick look at the [guidelines](./CONTRIBUTING.md)!
+Feel free to send feedback on [Twitter](https://twitter.com/jklingenberg_) or [file an issue](https://github.com/foso/Folders2kt/issues/new). Feature requests are always welcome. 
 
 
 ## 📜 License
