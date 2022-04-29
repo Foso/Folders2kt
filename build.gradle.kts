@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.6.0"
+    kotlin("jvm") version "1.6.21"
 }
 
 group = "de.jensklingenberg"
@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-scripting-jsr223:1.6.0")
+    implementation("org.jetbrains.kotlin:kotlin-scripting-jsr223:1.6.21")
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
     implementation(kotlin("script-runtime"))
@@ -21,7 +21,7 @@ dependencies {
     implementation(kotlin("scripting-compiler-embeddable"))
     implementation(kotlin("script-util"))
     testImplementation(kotlin("test"))
-    runtimeOnly("org.jetbrains.kotlin:kotlin-scripting-jsr223:1.6.0")
+    runtimeOnly("org.jetbrains.kotlin:kotlin-scripting-jsr223:1.6.21")
 }
 
 val mainClass = "de.jensklingenberg.folders2kt.StartKt" // replace it!

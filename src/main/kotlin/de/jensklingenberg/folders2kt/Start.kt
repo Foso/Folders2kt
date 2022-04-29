@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
 
     val debug = true
     val cmdArgs = if (debug) {
-        arrayOf("-d", "/Users/jklingenberg/Code/2021/Folders2kt/sample_programs/HelloWorld")
+        arrayOf("-d", "/Users/jensklingenberg/Code/2022/jk/Folders2kt/sample_programs/HelloWorld")
     } else {
         args
     }
