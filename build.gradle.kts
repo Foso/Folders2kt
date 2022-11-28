@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-scripting-jsr223:1.7.20")
+    implementation("org.jetbrains.kotlin:kotlin-scripting-jsr223:1.7.22")
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
     implementation(kotlin("script-runtime"))
