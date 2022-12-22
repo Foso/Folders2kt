@@ -2,7 +2,7 @@
 An Interpreter/Transpiler of the Folders esoteric programming language, a language with no code and just folders, written in Kotlin
 
 
-
+[![justforfunnoreally.dev badge](https://img.shields.io/badge/justforfunnoreally-dev-9ff)](https://justforfunnoreally.dev)
 [![jCenter](https://img.shields.io/badge/Apache-2.0-green.svg
 )](https://github.com/Foso/Folders2kt/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
