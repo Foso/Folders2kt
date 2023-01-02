@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-scripting-jsr223:1.7.22")
+    implementation("org.jetbrains.kotlin:kotlin-scripting-jsr223:1.8.0")
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
     implementation(kotlin("script-runtime"))
@@ -21,7 +21,7 @@ dependencies {
     implementation(kotlin("scripting-compiler-embeddable"))
     implementation(kotlin("script-util"))
     testImplementation(kotlin("test"))
-    runtimeOnly("org.jetbrains.kotlin:kotlin-scripting-jsr223:1.7.20")
+    runtimeOnly("org.jetbrains.kotlin:kotlin-scripting-jsr223:1.8.0")
 }
 
 val mainClass = "de.jensklingenberg.folders2kt.StartKt" // replace it!
