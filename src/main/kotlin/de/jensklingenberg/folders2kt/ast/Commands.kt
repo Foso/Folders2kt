@@ -49,11 +49,9 @@ class LetCmd(private val varName: String, private val expression: Expression) : 
     }
 }
 
-
 enum class CommandType(val folders: Int) {
     IF(0), WHILE(1), DECLARE(2), LET(3), PRINT(4), INPUT(5)
 }
-
 
 enum class Types(val index: Int, val ktType: String) {
     INT(0, "Int"), FLOAT(1, "Float"), STRING(2, "String"), CHAR(3, "String")

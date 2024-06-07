@@ -27,9 +27,11 @@ class LiteralExpr(private val types: Types, private val value: String) : Express
             Types.INT -> {
                 value
             }
+
             Types.FLOAT -> {
                 value + "f"
             }
+
             Types.STRING, Types.CHAR -> {
                 "\"" + value + "\""
             }

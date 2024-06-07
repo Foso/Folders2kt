@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
 
     val debug = true
     val cmdArgs = if (debug) {
-        arrayOf("-d", "/Users/jensklingenberg/Code/2022/jk/Folders2kt/sample_programs/HelloWorld")
+        arrayOf("-d", "./sample_programs/HelloWorld")
     } else {
         args
     }
@@ -21,7 +21,7 @@ fun main(args: Array<String>) {
     val execute = !printSource
     val dirParameterIndex = cmdArgs.indexOf("-d")
     if (dirParameterIndex == -1) {
-        throw Exception("directory paramater -d missing")
+        throw Exception("directory parameter -d missing")
     }
     val folderPath = cmdArgs[dirParameterIndex + 1]
 

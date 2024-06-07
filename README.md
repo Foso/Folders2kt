@@ -5,7 +5,6 @@ An Interpreter/Transpiler of the Folders esoteric programming language, a langua
 
 [![jCenter](https://img.shields.io/badge/Apache-2.0-green.svg
 )](https://github.com/Foso/Folders2kt/blob/master/LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
   <a href="https://twitter.com/intent/tweet?text=Hey, check out Folders2kt https://github.com/Foso/Folders2kt via @jklingenberg_ 
 "><img src="https://img.shields.io/twitter/url/https/github.com/angular-medellin/meetup.svg?style=social" alt="Tweet"></a>
 
@@ -36,7 +35,7 @@ To execute a Folders program you need to add the directory path of the program w
 </p>
 
 ### Print Source
-To execute a Folders program you need a the directory path of the program with the "-d" parameter and the "-source" parameter
+To execute a Folders program you need the directory path of the program with the "-d" parameter and the "-source" parameter
 
 <kbd> java -jar Folders2kt-1.0-SNAPSHOT-all.jar -d /Users/jklingenberg/Code/2021/Folders2kt/sample_programs/99Bottles -source </kbd>
 
@@ -48,15 +47,15 @@ To execute a Folders program you need a the directory path of the program with t
 
 ## 🛠️ Built With
 ### Kotlin
-[![jCenter](https://img.shields.io/badge/Kotlin-1.6.0-green.svg
+[![jCenter](https://img.shields.io/badge/Kotlin-2.0.0-green.svg
 )]()
 
 
 
 ### Project Structure
 * <kbd>src/main</kbd> - Source code of the interpreter
-* <kbd>sample_programs</kbd> - Example programs i got from https://github.com/SinaKhalili/Folders.py
-
+* <kbd>sample_programs</kbd> - Example programs I got from https://github.com/SinaKhalili/Folders.py
+You need to extract the zips before you can run them.
 
 ## ✍️ Feedback
 

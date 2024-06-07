@@ -4,11 +4,10 @@ import java.io.File
 import java.util.regex.Pattern
 
 class WindowsExplorerComparator : Comparator<String> {
-    val splitPattern = Pattern.compile("\\d+|\\.|\\s");
-
+    private val splitPattern: Pattern = Pattern.compile("\\d+|\\.|\\s")
 
     override fun compare(p0: String?, p1: String?): Int {
-        val i1 = splitStringPreserveDelimiter(p0!!).iterator();
+        val i1 = splitStringPreserveDelimiter(p0!!).iterator()
         val i2 = splitStringPreserveDelimiter(p1!!).iterator();
 
         while (true) {
@@ -25,7 +24,7 @@ class WindowsExplorerComparator : Comparator<String> {
                 return 1;
             }
 
-            val data1: String = i1.next();
+            val data1: String = i1.next()
             val data2: String = i2.next();
             var result = 0;
             try {
@@ -47,7 +46,6 @@ class WindowsExplorerComparator : Comparator<String> {
         }
     }
 
-
     private fun splitStringPreserveDelimiter(str: String): List<String> {
         val matcher = splitPattern.matcher(str);
         val list = ArrayList<String>();
@@ -58,14 +56,12 @@ class WindowsExplorerComparator : Comparator<String> {
             pos = matcher.end();
         }
         list.add(str.substring(pos));
-        return list;
+        return list
     }
-
-
 }
 
 object FilesComparator : java.util.Comparator<File> {
-    val NATURAL_SORT = WindowsExplorerComparator()
+    private val NATURAL_SORT = WindowsExplorerComparator()
     override fun compare(p0: File?, p1: File?): Int {
         return NATURAL_SORT.compare(p0!!.name, p1!!.name);
     }
